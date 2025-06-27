@@ -37,15 +37,10 @@ The resolved configuration includes:
 
 ```typescript
 interface ResolvedConfig {
-  content: {
-    files: Array<{base: string; pattern: string} | {raw: string; extension?: string}>
-  }
-  theme: Record<string, Record<string, unknown>>  // Fully resolved theme values
-  darkMode: DarkModeStrategy | null
-  prefix: string
-  important: boolean | string
-  blocklist: string[]
-  future: Record<string, boolean>
+  theme: Record<string, string>      // Flat key-value pairs of theme values
+  keyframes: Record<string, string>  // CSS keyframe definitions
+  prefix?: string                    // Class prefix if configured
+  darkMode?: 'class' | 'media' | false | null  // Dark mode strategy
 }
 ```
 
@@ -53,32 +48,27 @@ interface ResolvedConfig {
 
 ```javascript
 {
-  content: {
-    files: [
-      { base: '/path/to/project', pattern: './src/**/*.{js,jsx,ts,tsx}' }
-    ]
-  },
   theme: {
-    colors: {
-      blue: { 
-        50: '#eff6ff', 
-        100: '#dbeafe',
-        // ... 
-      },
-      // ... all other colors
-    },
-    spacing: {
-      0: '0px',
-      1: '0.25rem',
-      // ... all spacing values
-    },
-    // ... all other theme values
+    '--color-black': '#000',
+    '--color-white': '#fff',
+    '--color-primary': '#3490dc',
+    '--color-primary-50': '#eff6ff',
+    '--color-primary-100': '#dbeafe',
+    '--color-primary-500': '#3b82f6',
+    '--color-primary-900': '#1e3a8a',
+    '--spacing-0': '0px',
+    '--spacing-1': '0.25rem',
+    '--spacing-2': '0.5rem',
+    '--spacing-4': '1rem',
+    // ... all other theme values as flat key-value pairs
   },
-  darkMode: 'class',
-  prefix: '',
-  important: false,
-  blocklist: [],
-  future: {}
+  keyframes: {
+    wiggle: '@keyframes wiggle { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }',
+    fadeIn: '@keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }',
+    // ... all other keyframe definitions
+  },
+  prefix: 'tw-',
+  darkMode: 'class'
 }
 ```
 
@@ -92,18 +82,6 @@ Main function to resolve a Tailwind configuration.
 - `cwd` (string): Directory to start searching from (defaults to `process.cwd()`)
 
 **Returns:** `Promise<ResolvedConfig>`
-
-### `findConfigFile(cwd)`
-
-Find a Tailwind config file starting from the given directory.
-
-**Returns:** `Promise<string | null>`
-
-### `loadConfigFile(path)`
-
-Load a specific Tailwind config file.
-
-**Returns:** `Promise<UserConfig>`
 
 ## Use Cases
 
