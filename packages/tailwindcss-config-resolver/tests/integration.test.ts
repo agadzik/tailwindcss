@@ -22,9 +22,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Theme function should be resolved
     expect(resolved.theme['--color-primary']).toBe('#3490dc')
@@ -43,9 +41,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have default colors added
     expect(resolved.theme['--color-black']).toBe('#000')
@@ -65,9 +61,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have default colors
     expect(resolved.theme['--color-black']).toBe('#000')
@@ -90,9 +84,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have default theme values
     expect(resolved.theme['--color-black']).toBe('#000')
@@ -108,9 +100,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have custom color
     expect(resolved.theme['--color-custom']).toBe('#123456')
@@ -127,9 +117,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have accent color
     expect(resolved.theme['--color-accent']).toBe('#ff6b6b')
@@ -144,9 +132,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have brand color
     expect(resolved.theme['--color-brand']).toBe('#5e72e4')
@@ -161,9 +147,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have nested color values
     expect(resolved.theme['--color-primary-50']).toBe('#eff6ff')
@@ -199,9 +183,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have colors from first preset
     expect(resolved.theme['--color-primary']).toBe('#3490dc')
@@ -225,9 +207,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have overridden primary color
     expect(resolved.theme['--color-primary']).toBe('#e74c3c')
@@ -250,9 +230,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have theme values
     expect(resolved.theme['--color-animated']).toBe('#8b5cf6')
@@ -277,26 +255,11 @@ describe('Integration tests', () => {
   it('should throw error for non-existent config file', async () => {
     // This test doesn't need a fixture setup since it's testing a non-existent path
     await expect(
-      resolveTailwindConfig({
-        cwd: join(fixturesDir, 'non-existent-dir')
-      })
+      resolveTailwindConfig(join(fixturesDir, 'non-existent-dir'))
     ).rejects.toThrow('No config file found')
   })
 
-  it('should work without explicit cwd', async () => {
-    const fixturePath = join(fixturesDir, 'basic-config')
-    const cleanup = await setupFixture(fixturePath)
-    cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      configPath: join(fixturePath, 'tailwind.config.js')
-    })
-
-    // Should resolve config correctly
-    expect(resolved.theme['--color-primary']).toBe('#3490dc')
-    expect(resolved.prefix).toBe('tw')
-    expect(resolved.darkMode).toBe('class')
-  })
 
   // V4 Config Tests
   it('should handle v4 basic config', async () => {
@@ -304,9 +267,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have v4 theme values
     expect(resolved.theme['--color-primary']).toBe('#3490dc')
@@ -321,9 +282,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have theme values
     expect(resolved.theme['--color-brand']).toBe('#5e72e4')
@@ -334,9 +293,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have theme values
     expect(resolved.theme['--spacing-custom']).toBe('2.5rem')
@@ -347,9 +304,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should find and resolve the nested config
     expect(resolved.theme['--color-accent']).toBe('#ff6b6b')
@@ -360,9 +315,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have v4 theme values
     expect(resolved.theme['--color-v4-custom']).toBe('#123456')
@@ -379,9 +332,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have v3 config values
     expect(resolved.theme['--color-v3primary']).toBe('#7c3aed')
@@ -397,9 +348,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should find one of the configs (ripgrep will determine order)
     // Both configs define different colors, so we can check which was found
@@ -418,9 +367,7 @@ describe('Integration tests', () => {
 
     // This should fall back to looking for v3 configs
     await expect(
-      resolveTailwindConfig({
-        cwd: fixturePath
-      })
+      resolveTailwindConfig(fixturePath)
     ).rejects.toThrow('No config file found')
   })
 
@@ -429,9 +376,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have TypeScript-specific colors
     expect(resolved.theme['--color-typescript']).toBe('#3178c6')
@@ -451,9 +396,7 @@ describe('Integration tests', () => {
     const cleanup = await setupFixture(fixturePath)
     cleanupFns.push(cleanup)
 
-    const resolved = await resolveTailwindConfig({
-      cwd: fixturePath
-    })
+    const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have v4 theme values
     expect(resolved.theme['--color-v4-ts']).toBe('#8b5cf6')

@@ -1,6 +1,5 @@
 import { dirname, resolve } from 'node:path'
 import { readFile } from 'node:fs/promises'
-import type { ResolverOptions } from './types'
 import { findConfigFile } from './finder'
 import { findV4ConfigFile } from './v4-finder'
 import { __unstable__loadDesignSystem } from '@tailwindcss/node'
@@ -25,11 +24,10 @@ interface ResolvedConfig {
 /**
  * Resolve a Tailwind CSS configuration file and return the fully resolved config.
  * 
- * @param options - Options for resolving the config
+ * @param cwd - The current working directory to resolve the config from
  * @returns The fully resolved Tailwind configuration
  */
-export async function resolveTailwindConfig(options: ResolverOptions = {}): Promise<ResolvedConfig> {
-  const { cwd = process.cwd(), configPath } = options
+export async function resolveTailwindConfig(cwd: string = process.cwd()): Promise<ResolvedConfig> {
 
   let cssContent = `
         @import 'tailwindcss';
@@ -38,8 +36,7 @@ export async function resolveTailwindConfig(options: ResolverOptions = {}): Prom
   let unresolvedUserConfig: Config | null = null
 
   // First, try to find a v4 CSS config file
-  // If a specific config path is provided, don't search for v4 configs
-  const v4ConfigPath = configPath ? null : await findV4ConfigFile(resolve(cwd))
+  const v4ConfigPath = await findV4ConfigFile(resolve(cwd))
   
   // Always use cwd as the base path for the design system to find node_modules
   let basePath = cwd
@@ -49,17 +46,7 @@ export async function resolveTailwindConfig(options: ResolverOptions = {}): Prom
     cssContent = await readFile(v4ConfigPath, 'utf-8')
   } else {
     // No v4 config found, try to find a v3 config
-    if (configPath) {
-      resolvedConfigPath = resolve(cwd, configPath)
-      // Check if the explicitly provided config path exists
-      try {
-        await readFile(resolvedConfigPath, 'utf-8')
-      } catch (error) {
-        throw new Error(`Config file not found: ${resolvedConfigPath}`)
-      }
-    } else {
-      resolvedConfigPath = await findConfigFile(resolve(cwd))
-    }
+    resolvedConfigPath = await findConfigFile(resolve(cwd))
 
     if (!resolvedConfigPath) {
       throw new Error('No config file found')

@@ -13,16 +13,11 @@ npm install tailwindcss-config-resolver
 ```javascript
 import { resolveTailwindConfig } from 'tailwindcss-config-resolver'
 
-// Automatically find and resolve config
+// Automatically find and resolve config in current directory
 const config = await resolveTailwindConfig()
 
 // Specify a custom working directory
-const config = await resolveTailwindConfig({ cwd: './my-project' })
-
-// Use a specific config file
-const config = await resolveTailwindConfig({ 
-  configPath: './custom-tailwind.config.js' 
-})
+const config = await resolveTailwindConfig('./my-project')
 ```
 
 ## What It Does
@@ -89,13 +84,12 @@ interface ResolvedConfig {
 
 ## API
 
-### `resolveTailwindConfig(options?)`
+### `resolveTailwindConfig(cwd?)`
 
 Main function to resolve a Tailwind configuration.
 
-**Options:**
+**Parameters:**
 - `cwd` (string): Directory to start searching from (defaults to `process.cwd()`)
-- `configPath` (string): Explicit path to config file
 
 **Returns:** `Promise<ResolvedConfig>`
 
