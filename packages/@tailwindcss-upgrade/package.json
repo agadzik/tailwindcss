@@ -22,10 +22,7 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "provenance": true,
-    "access": "public"
-  },
+  "private": true,
   "dependencies": {
     "@tailwindcss/node": "workspace:*",
     "@tailwindcss/oxide": "workspace:*",

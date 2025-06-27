@@ -17,10 +17,7 @@
   "files": [
     "dist/"
   ],
-  "publishConfig": {
-    "provenance": true,
-    "access": "public"
-  },
+  "private": true,
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",

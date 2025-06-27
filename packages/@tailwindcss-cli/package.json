@@ -24,10 +24,7 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "provenance": true,
-    "access": "public"
-  },
+  "private": true,
   "dependencies": {
     "@parcel/watcher": "^2.5.1",
     "@tailwindcss/node": "workspace:*",
