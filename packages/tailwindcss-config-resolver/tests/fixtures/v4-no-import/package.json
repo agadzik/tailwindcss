@@ -1,0 +1,7 @@
+{
+  "name": "v4-no-import-fixture",
+  "private": true,
+  "dependencies": {
+    "tailwindcss": "workspace:*"
+  }
+}

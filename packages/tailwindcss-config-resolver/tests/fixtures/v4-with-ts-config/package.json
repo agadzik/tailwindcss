@@ -1,0 +1,10 @@
+{
+  "name": "v4-with-ts-config-fixture",
+  "private": true,
+  "dependencies": {
+    "tailwindcss": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,5 @@
+@import  'tailwindcss' ;
+
+@theme {
+  --spacing-custom: 2.5rem;
+}

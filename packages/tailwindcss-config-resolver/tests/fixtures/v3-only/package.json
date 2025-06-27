@@ -1,0 +1,7 @@
+{
+  "name": "v3-only-fixture",
+  "private": true,
+  "dependencies": {
+    "tailwindcss": "workspace:*"
+  }
+}

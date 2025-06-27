@@ -1,0 +1,46 @@
+{
+  "name": "tailwindcss-config-resolver",
+  "version": "0.1.0",
+  "description": "Resolve Tailwind CSS configurations to provide context for LLMs",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bunchee",
+    "dev": "bunchee --watch",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
+  "dependencies": {
+    "@tailwindcss/node": "workspace:*",
+    "@vscode/ripgrep": "^1.15.9"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^3.0.0 || ^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.13",
+    "bunchee": "^6.5.4",
+    "tailwindcss": "workspace:*",
+    "typescript": "^5.0.0",
+    "vitest": "^1.6.1"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

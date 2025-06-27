@@ -1,0 +1,10 @@
+{
+  "name": "v3-typescript-fixture",
+  "private": true,
+  "dependencies": {
+    "tailwindcss": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "multiple-presets-fixture",
+  "private": true,
+  "dependencies": {
+    "tailwindcss": "workspace:*"
+  }
+}

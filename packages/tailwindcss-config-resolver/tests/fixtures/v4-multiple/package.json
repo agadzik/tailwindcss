@@ -1,0 +1,7 @@
+{
+  "name": "v4-multiple-fixture",
+  "private": true,
+  "dependencies": {
+    "tailwindcss": "workspace:*"
+  }
+}

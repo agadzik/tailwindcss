@@ -1,0 +1,7 @@
+{
+  "name": "empty-config-fixture",
+  "private": true,
+  "dependencies": {
+    "tailwindcss": "workspace:*"
+  }
+}

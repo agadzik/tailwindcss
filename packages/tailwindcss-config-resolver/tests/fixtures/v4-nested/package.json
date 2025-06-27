@@ -1,0 +1,7 @@
+{
+  "name": "v4-nested-fixture",
+  "private": true,
+  "dependencies": {
+    "tailwindcss": "workspace:*"
+  }
+}

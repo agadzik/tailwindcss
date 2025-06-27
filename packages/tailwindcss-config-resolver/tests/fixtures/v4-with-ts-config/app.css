@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+@config './tailwind.config.ts';
+
+@theme {
+  --color-v4-ts: #8b5cf6;
+  --spacing-v4: 5rem;
+}

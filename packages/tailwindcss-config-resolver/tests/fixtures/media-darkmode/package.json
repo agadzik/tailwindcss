@@ -1,0 +1,7 @@
+{
+  "name": "media-darkmode-fixture",
+  "private": true,
+  "dependencies": {
+    "tailwindcss": "workspace:*"
+  }
+}

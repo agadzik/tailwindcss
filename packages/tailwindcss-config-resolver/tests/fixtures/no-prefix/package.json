@@ -1,0 +1,7 @@
+{
+  "name": "no-prefix-fixture",
+  "private": true,
+  "dependencies": {
+    "tailwindcss": "workspace:*"
+  }
+}
