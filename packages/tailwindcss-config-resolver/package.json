@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-config-resolver",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Resolve Tailwind CSS configurations to provide context for LLMs",
   "license": "MIT",
   "main": "dist/index.js",
