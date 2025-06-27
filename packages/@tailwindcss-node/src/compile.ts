@@ -10,7 +10,7 @@ import {
   compileAst as _compileAst,
   Features,
   Polyfills,
-} from 'tailwindcss'
+} from '../../tailwindcss/src'
 import type { AstNode } from '../../tailwindcss/src/ast'
 import { getModuleDependencies } from './get-module-dependencies'
 import { rewriteUrls } from './urls'

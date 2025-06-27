@@ -318,10 +318,10 @@ describe('Integration tests', () => {
     const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have v4 theme values
-    expect(resolved.theme['--color-v4-custom']).toBe('#123456')
+    expect(resolved.theme['--legacy-color-v4-custom']).toBe('#123456')
     
     // Should also have values from the legacy config
-    expect(resolved.theme['--color-legacy']).toBe('#9b59b6')
+    expect(resolved.theme['--legacy-color-legacy']).toBe('#9b59b6')
     
     // Should use prefix from legacy config (v4 strips trailing dash)
     expect(resolved.prefix).toBe('legacy')
@@ -399,14 +399,14 @@ describe('Integration tests', () => {
     const resolved = await resolveTailwindConfig(fixturePath)
 
     // Should have v4 theme values
-    expect(resolved.theme['--color-v4-ts']).toBe('#8b5cf6')
-    expect(resolved.theme['--spacing-v4']).toBe('5rem')
+    expect(resolved.theme['--vts-color-v4-ts']).toBe('#8b5cf6')
+    expect(resolved.theme['--vts-spacing-v4']).toBe('5rem')
     
     // Should also have values from the TypeScript config
-    expect(resolved.theme['--color-ts-legacy']).toBe('#2563eb')
-    expect(resolved.theme['--color-ts-modern']).toBe('#0ea5e9')
-    expect(resolved.theme['--spacing-ts-lg']).toBe('3rem')
-    expect(resolved.theme['--spacing-ts-xl']).toBe('4rem')
+    expect(resolved.theme['--vts-color-ts-legacy']).toBe('#2563eb')
+    expect(resolved.theme['--vts-color-ts-modern']).toBe('#0ea5e9')
+    expect(resolved.theme['--vts-spacing-ts-lg']).toBe('3rem')
+    expect(resolved.theme['--vts-spacing-ts-xl']).toBe('4rem')
     
     // Should use prefix from TypeScript config (v4 strips trailing dash)
     expect(resolved.prefix).toBe('vts')
