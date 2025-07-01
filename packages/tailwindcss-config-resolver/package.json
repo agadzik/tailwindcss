@@ -27,11 +27,18 @@
     "typescript": "^5.0.0",
     "vitest": "^1.6.1"
   },
+  "bin": {
+    "tailwindcss-config-resolver": "./dist/cli.mjs"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
+    },
+    "./cli": {
+      "import": "./dist/cli.mjs",
+      "require": "./dist/cli.js"
     }
   },
   "private": false,
