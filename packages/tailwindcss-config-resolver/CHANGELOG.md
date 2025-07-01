@@ -1,5 +1,11 @@
 # tailwindcss-config-resolver
 
+## 1.1.0
+
+### Minor Changes
+
+- 8b4836e: Add a CLI tool
+
 ## 1.0.1
 
 ### Patch Changes
